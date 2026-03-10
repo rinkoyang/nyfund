@@ -2,39 +2,369 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>磐远美国公寓开发股权基金</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Noto+Serif+SC:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C87A;
-    --gold-dim: rgba(201,168,76,0.15);
-    --dark: #0A0A0F;
-    --dark2: #111118;
-    --dark3: #1A1A24;
-    --dark4: #22222E;
-    --teal: #3ECFCF;
-    --teal-dim: rgba(62,207,207,0.12);
-    --text: #E8E4DC;
-    --muted: #8A8070;
-  }
+:root{--gold:#C9A84C;--gold-light:#E2C46A;--gold-dim:rgba(201,168,76,0.12);--gold-border:rgba(201,168,76,0.22);--teal:#3ECFCF;--teal-dim:rgba(62,207,207,0.10);--teal-border:rgba(62,207,207,0.22);--dark:#0C0C12;--card:#161620;--card2:#1D1D28;--line:rgba(255,255,255,0.07);--text:#EDEAE2;--sub:#A09888;--dim:#6A6258;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);font-family:'Noto Sans SC',-apple-system,sans-serif;font-size:15px;line-height:1.6;max-width:480px;margin:0 auto;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:rgba(12,12,18,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.logo{font-family:'Noto Serif SC',serif;font-size:13px;font-weight:400;color:var(--dim);letter-spacing:0.5px}
+.tabs{display:flex;gap:6px}
+.tab{font-size:13px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid transparent;background:none;color:var(--dim);cursor:pointer;transition:all .25s;font-family:'Noto Sans SC',sans-serif}
+.tab.on{border-color:var(--gold-border);background:var(--gold-dim);color:var(--gold)}
+.pages{display:flex;transition:transform .45s cubic-bezier(.77,0,.18,1)}
+.page{min-width:100vw;padding-bottom:64px}
+.hero{padding:32px 18px 28px;background:linear-gradient(170deg,#111120 0%,var(--dark) 70%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 50% at 50% -10%,rgba(201,168,76,0.07),transparent 65%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--gold);letter-spacing:.8px;margin-bottom:18px}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero-label{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.65;margin-bottom:8px}
+.hero-h1{font-family:'Noto Serif SC',serif;font-size:26px;font-weight:700;line-height:1.3;margin-bottom:12px}
+.hero-h1 em{color:var(--gold);font-style:normal}
+.hero-desc{font-size:14px;color:var(--sub);line-height:1.75;margin-bottom:28px}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--gold-border);border-radius:var(--r);overflow:hidden;background:var(--card);margin-bottom:10px}
+.kpi{padding:16px 10px;text-align:center;border-right:1px solid var(--gold-border)}
+.kpi:last-child{border-right:none}
+.kpi-n{font-family:'DM Mono',monospace;font-size:24px;font-weight:500;line-height:1;margin-bottom:6px}
+.kpi-n.gold{color:var(--gold)}
+.kpi-n.teal{color:var(--teal)}
+.kpi-l{font-size:11px;color:var(--dim);line-height:1.4}
+.mini-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:13px 14px;display:flex;justify-content:space-between;align-items:center}
+.mini-l{font-size:12px;color:var(--sub)}
+.mini-n{font-size:15px;font-weight:700;color:var(--gold-light)}
+.sec{padding:26px 18px 0}
+.sec-tag{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:6px}
+.sec-h2{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700;line-height:1.35;margin-bottom:16px}
+.hr{height:1px;margin:26px 18px 0;background:linear-gradient(90deg,transparent,var(--line) 30%,var(--line) 70%,transparent)}
+.adv-list{display:flex;flex-direction:column;gap:10px}
+.adv{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.adv-icon{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:19px}
+.adv h3{font-size:15px;font-weight:700;margin-bottom:5px}
+.adv p{font-size:13px;color:var(--sub);line-height:1.7}
+.adv strong{color:var(--gold-light);font-weight:600}
+.market-intro{font-size:14px;color:var(--sub);line-height:1.75;padding:14px 15px;background:var(--gold-dim);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;margin-bottom:14px}
+.market-intro strong{color:var(--gold-light)}
+.mkt-list{display:flex;flex-direction:column;gap:10px}
+.mkt{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.mkt-top{display:flex;justify-content:space-between;align-items:flex-start;padding:16px 16px 0}
+.mkt-city{font-size:17px;font-weight:700;margin-bottom:2px}
+.mkt-sub{font-size:12px;color:var(--gold)}
+.mkt-state{background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:6px;padding:3px 9px;font-size:11px;color:var(--gold);flex-shrink:0}
+.mkt-body{padding:10px 16px 14px;font-size:13px;color:var(--sub);line-height:1.75}
+.mkt-body em{color:var(--text);font-style:normal;font-weight:500}
+.mkt-stats{display:flex;border-top:1px solid var(--line)}
+.ms{flex:1;padding:11px 8px;text-align:center;border-right:1px solid var(--line)}
+.ms:last-child{border-right:none}
+.ms-n{font-family:'DM Mono',monospace;font-size:14px;color:var(--gold-light);margin-bottom:3px}
+.ms-l{font-size:10px;color:var(--dim)}
+.mkt-moat{padding:10px 14px;background:var(--teal-dim);font-size:12px;color:var(--teal);line-height:1.55;border-top:1px solid var(--teal-border)}
+.track-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.track{background:var(--card);border:1px solid var(--teal-border);border-radius:var(--r);padding:16px}
+.track-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.track-name{font-size:14px;font-weight:700}
+.track-period{font-size:11px;color:var(--dim)}
+.track-nums{display:flex;gap:24px}
+.tn-n{font-family:'DM Mono',monospace;font-size:26px;color:var(--teal);line-height:1}
+.tn-l{font-size:11px;color:var(--dim);margin-top:4px}
+.dist-label{font-size:13px;color:var(--sub);margin-bottom:10px}
+.dist-row{display:flex;gap:8px}
+.dist{flex:1;background:var(--teal-dim);border:1px solid var(--teal-border);border-radius:10px;padding:11px 8px;text-align:center}
+.dist-n{font-family:'DM Mono',monospace;font-size:15px;color:var(--teal)}
+.dist-l{font-size:10px;color:var(--dim);margin-top:3px}
+.proj-wrap{padding:26px 0 0}
+.proj-hd{padding:0 18px;margin-bottom:12px}
+.scroll-hint{font-size:12px;color:var(--dim);padding:0 18px;margin-bottom:10px}
+.proj-scroll{display:flex;gap:10px;overflow-x:auto;padding:4px 18px 10px;scrollbar-width:none}
+.proj-scroll::-webkit-scrollbar{display:none}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:var(--r);min-width:235px;flex-shrink:0;overflow:hidden;position:relative}
+.proj::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--teal))}
+.proj-inner{padding:16px}
+.proj-city{font-size:17px;font-weight:700;margin-bottom:1px}
+.proj-state{font-size:11px;color:var(--dim);margin-bottom:14px}
+.proj-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+.proj-row:last-of-type{border-bottom:none;padding-bottom:0}
+.proj-lbl{color:var(--sub)}
+.proj-val{font-weight:600}
+.proj-val.hl{color:var(--teal);font-size:15px}
+.proj-footer{padding:10px 14px;background:rgba(255,255,255,0.03);border-top:1px solid var(--line);font-size:11px;color:var(--dim)}
+.proj-footer span{color:var(--text);font-weight:700}
+.inst-bar{display:flex;gap:8px;padding:10px 18px 0}
+.inst{flex:1;background:var(--card2);border:1px solid var(--teal-border);border-radius:10px;padding:10px 8px;text-align:center}
+.inst-n{font-size:13px;font-weight:700;color:var(--teal)}
+.inst-l{font-size:10px;color:var(--dim);margin-top:2px}
+.steps{display:flex;flex-direction:column}
+.step{display:flex;gap:14px;padding:14px 0;position:relative}
+.step:not(:last-child)::after{content:'';position:absolute;left:18px;top:50px;bottom:-4px;width:1px;background:linear-gradient(180deg,var(--gold-border),transparent)}
+.step-n{width:36px;height:36px;border-radius:50%;flex-shrink:0;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--gold)}
+.step-h{font-size:14px;font-weight:700;margin-bottom:4px}
+.step-p{font-size:13px;color:var(--sub);line-height:1.7}
+.calc{margin:0 18px;background:linear-gradient(135deg,rgba(201,168,76,.07),rgba(62,207,207,.04));border:1px solid var(--gold-border);border-radius:var(--r);padding:22px 18px}
+.calc-h{font-size:13px;color:var(--gold);text-align:center;margin-bottom:18px;font-weight:600}
+.calc-row{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.calc-item{text-align:center}
+.calc-n{font-family:'DM Mono',monospace;font-size:20px;line-height:1}
+.calc-l{font-size:10px;color:var(--dim);margin-top:4px}
+.calc-op{font-size:16px;color:var(--dim);padding-bottom:14px}
+.terms{border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.term{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line);background:var(--card)}
+.term:last-child{border-bottom:none}
+.term:nth-child(even){background:var(--card2)}
+.t-l{font-size:13px;color:var(--sub)}
+.t-r{font-size:13px;font-weight:600;text-align:right;max-width:55%}
+.t-r.gold{color:var(--gold)}
+.t-r.teal{color:var(--teal)}
+.cta{margin:24px 18px 0;background:var(--card);border:1px solid var(--gold-border);border-radius:18px;padding:24px 18px;text-align:center}
+.cta-h{font-family:'Noto Serif SC',serif;font-size:17px;font-weight:700;margin-bottom:8px}
+.cta-sub{font-size:13px;color:var(--sub);line-height:1.7;margin-bottom:20px}
+.cta-sub strong{color:var(--gold-light)}
+.cta-btn{display:block;width:100%;padding:16px;background:linear-gradient(135deg,#C9A84C,#A8872A);color:#0C0C12;font-size:16px;font-weight:700;border-radius:12px;border:none;cursor:pointer;font-family:'Noto Serif SC',serif;letter-spacing:.5px;text-decoration:none;transition:opacity .2s}
+.cta-btn:active{opacity:.82}
+.disclaimer{font-size:11px;color:var(--dim);margin-top:12px;line-height:1.6}
+.fi{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.fi.on{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">磐远 Panorama</div>
+  <div class="tabs">
+    <button class="tab on" onclick="go(0)">概览</button>
+    <button class="tab" onclick="go(1)">项目 &amp; 条款</button>
+  </div>
+</nav>
+<div class="pages" id="pages">
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+<!-- PAGE 1 -->
+<div class="page">
+<div class="hero fi on">
+  <div class="badge"><span class="badge-dot"></span>限额开放 · 当前第一批</div>
+  <div class="hero-label">Panorama NY Fund</div>
+  <h1 class="hero-h1">磐远美国<em>公寓开发</em>股权基金</h1>
+  <p class="hero-desc">聚焦纽约 / 费城大都会圈财富走廊，通过「买地 → 建设 → 出租 → 退出」参与开发端超额利润</p>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-n gold">2.15x</div><div class="kpi-l">目标回报倍数</div></div>
+    <div class="kpi"><div class="kpi-n teal">16.9%</div><div class="kpi-l">目标年化 IRR</div></div>
+    <div class="kpi"><div class="kpi-n gold">7%</div><div class="kpi-l">优先年化收益</div></div>
+  </div>
+  <div class="mini-row" style="margin-top:10px">
+    <div class="mini"><span class="mini-l">最低起投</span><span class="mini-n">$10 万</span></div>
+    <div class="mini"><span class="mini-l">第 5 年起</span><span class="mini-n">阶段退出分配</span></div>
+  </div>
+</div>
 
-  html { scroll-behavior: smooth; }
+<div class="hr"></div>
 
-  body {
-    background: var(--dark);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    max-width: 430px;
-    margin: 0 auto;
-    overflow-x: hidden;
-  }
+<div class="sec fi">
+  <div class="sec-tag">核心优势</div>
+  <h2 class="sec-h2">为什么选择这支基金</h2>
+  <div class="adv-list">
+    <div class="adv">
+      <div class="adv-icon">🏙️</div>
+      <div><h3>高壁垒 · 精英市场</h3><p>三个目标市场审批周期 5 年+，供给趋近于零，租金五年涨幅 <strong>+24% ~ +28%</strong>，空置率低至 3%。</p></div>
+    </div>
+    <div class="adv">
+      <div class="adv-icon">💰</div>
+      <div><h3>低造价 · 超额利润</h3><p>开发成本仅 <strong>$35 万 ~ 46 万 / 套</strong>，对比曼哈顿低 60%，Yield on Cost 达 5.5% ~ 7%，利润空间显著。</p></div>
+    </div>
+    <div class="adv">
+      <div class="adv-icon">🏦</div>
+      <div><h3>顶级 PE 机构共投</h3><p>全球最大另类资管机构之一（NASDAQ 上市，AUM $4000 亿+）<strong>真金白银并列出资</strong>，机构级双重尽调背书。</p></div>
+    </div>
+    <div class="adv">
+      <div class="adv-icon">🛡️</div>
+      <div><h3>结构优 · 投资人优先</h3><p>管理费仅 1%（行业均值 2%）；7% 优先收益 LP 先拿；超额利润 <strong>80% 归投资人</strong>；独立 SPV 风险隔离。</p></div>
+    </div>
+  </div>
+</div>
 
-  /* ── NAV ── */
-  nav {
+<div class="hr"></div>
+
+<div class="sec fi">
+  <div class="sec-tag">目标市场</div>
+  <h2 class="sec-h2">我们选什么样的市场</h2>
+  <div class="market-intro">
+    紧邻<strong>顶级富人区</strong>的精英通勤带——高薪人群聚集、住房供给极度稀缺、审批门槛高，开发成本却只有曼哈顿的三分之一。以下是我们<strong>部分目标市场</strong>的典型特征。
+  </div>
+  <div class="mkt-list">
+    <div class="mkt">
+      <div class="mkt-top"><div><div class="mkt-city">Stamford, CT</div><div class="mkt-sub">格林威治「溢出」地带</div></div><div class="mkt-state">康州</div></div>
+      <div class="mkt-body">格林威治是华尔街 CEO、对冲基金大佬的后花园，豪宅均价 2000 ~ 3500 万美元。<em>太贵了</em>——大量金融高管选择住在旁边的 Stamford，Metro-North 45 分钟直达曼哈顿。</div>
+      <div class="mkt-stats">
+        <div class="ms"><div class="ms-n">$4,200</div><div class="ms-l">2BR 月租</div></div>
+        <div class="ms"><div class="ms-n">$110K+</div><div class="ms-l">家庭中位收入</div></div>
+        <div class="ms"><div class="ms-n">3.2%</div><div class="ms-l">空置率</div></div>
+      </div>
+      <div class="mkt-moat">⚡ 康州严格 Zoning，新项目审批需 5 年+，供给近乎为零</div>
+    </div>
+    <div class="mkt">
+      <div class="mkt-top"><div><div class="mkt-city">Yorktown, NY</div><div class="mkt-sub">Westchester 富人郡核心</div></div><div class="mkt-state">纽约州</div></div>
+      <div class="mkt-body">Westchester 是全美人均收入最高的郡之一，坐拥 40+ 顶尖学区，常春藤升学率全美前三。目标客群是<em>「黄金一代」</em>——卖掉豪宅套现，告别每年 $2.5 万房产税，换高端租赁生活。</div>
+      <div class="mkt-stats">
+        <div class="ms"><div class="ms-n">$4,500</div><div class="ms-l">2BR 月租</div></div>
+        <div class="ms"><div class="ms-n">$160K+</div><div class="ms-l">家庭中位收入</div></div>
+        <div class="ms"><div class="ms-n">3.8%</div><div class="ms-l">空置率</div></div>
+      </div>
+      <div class="mkt-moat">⚡ 本项目获极罕见开发许可，竞争者无法快速跟进</div>
+    </div>
+    <div class="mkt">
+      <div class="mkt-top"><div><div class="mkt-city">Evesham, NJ</div><div class="mkt-sub">费城精英「逃离地」</div></div><div class="mkt-state">新泽西</div></div>
+      <div class="mkt-body">费城是全美顶尖医疗与金融法律中枢，但高税收（工资税 3.74%）、治安隐忧迫使精英外迁。Evesham 是首选：<em>20 分钟通勤 + 顶级学区</em>，周边 80% 公寓房龄超 30 年，新供给断档。</div>
+      <div class="mkt-stats">
+        <div class="ms"><div class="ms-n">$3,400</div><div class="ms-l">2BR 月租</div></div>
+        <div class="ms"><div class="ms-n">$148K+</div><div class="ms-l">家庭中位收入</div></div>
+        <div class="ms"><div class="ms-n">4.0%</div><div class="ms-l">空置率</div></div>
+      </div>
+      <div class="mkt-moat">⚡ 本项目是区域内极少数全新 A 级供应，近乎垄断定价权</div>
+    </div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<div class="sec fi">
+  <div class="sec-tag">过往实绩</div>
+  <h2 class="sec-h2">真实业绩 · 完整周期验证</h2>
+  <div class="track-list">
+    <div class="track">
+      <div class="track-head"><span class="track-name">大学城公寓 一期</span><span class="track-period">2016 → 2019 · 377 套</span></div>
+      <div class="track-nums"><div><div class="tn-n">25.3%</div><div class="tn-l">年化 IRR</div></div><div><div class="tn-n">1.76x</div><div class="tn-l">回报倍数</div></div></div>
+    </div>
+    <div class="track">
+      <div class="track-head"><span class="track-name">大学城公寓 二期</span><span class="track-period">2019 → 2022 · 314 套</span></div>
+      <div class="track-nums"><div><div class="tn-n">26.7%</div><div class="tn-l">年化 IRR</div></div><div><div class="tn-n">1.80x</div><div class="tn-l">回报倍数</div></div></div>
+    </div>
+  </div>
+  <div class="dist-label">在管基金 2025 年分配记录</div>
+  <div class="dist-row">
+    <div class="dist"><div class="dist-n">$62万</div><div class="dist-l">Midtown</div></div>
+    <div class="dist"><div class="dist-n">$85万</div><div class="dist-l">POF</div></div>
+    <div class="dist"><div class="dist-n">$400万</div><div class="dist-l">PQOZ</div></div>
+  </div>
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+<div class="proj-wrap fi on">
+  <div class="proj-hd"><div class="sec-tag">底层资产</div><h2 class="sec-h2">精选项目示例</h2></div>
+  <div class="scroll-hint">← 左右滑动查看全部项目 →</div>
+  <div class="proj-scroll">
+    <div class="proj">
+      <div class="proj-inner">
+        <div class="proj-city">Stamford, CT</div><div class="proj-state">康州 · 格林威治外溢富人区</div>
+        <div class="proj-row"><span class="proj-lbl">总开发成本</span><span class="proj-val">$196M</span></div>
+        <div class="proj-row"><span class="proj-lbl">预计退出估值</span><span class="proj-val">$286M+</span></div>
+        <div class="proj-row"><span class="proj-lbl">股权回报</span><span class="proj-val hl">2.46x</span></div>
+        <div class="proj-row"><span class="proj-lbl">Yield on Cost</span><span class="proj-val">7.7%</span></div>
+        <div class="proj-row"><span class="proj-lbl">平均月租 2BR</span><span class="proj-val">$4,200+</span></div>
+      </div>
+      <div class="proj-footer"><span>463</span> 套 · Metro-North 45 分钟达曼哈顿</div>
+    </div>
+    <div class="proj">
+      <div class="proj-inner">
+        <div class="proj-city">Yorktown, NY</div><div class="proj-state">纽约州 · Westchester 富人郡</div>
+        <div class="proj-row"><span class="proj-lbl">总开发成本</span><span class="proj-val">$78M</span></div>
+        <div class="proj-row"><span class="proj-lbl">预计退出估值</span><span class="proj-val">$121M+</span></div>
+        <div class="proj-row"><span class="proj-lbl">股权回报</span><span class="proj-val hl">2.66x</span></div>
+        <div class="proj-row"><span class="proj-lbl">Yield on Cost</span><span class="proj-val">8.83%</span></div>
+        <div class="proj-row"><span class="proj-lbl">平均月租 2BR</span><span class="proj-val">$4,500+</span></div>
+      </div>
+      <div class="proj-footer"><span>174</span> 套 · 精英换房客群 · 供应趋零</div>
+    </div>
+    <div class="proj">
+      <div class="proj-inner">
+        <div class="proj-city">Evesham, NJ</div><div class="proj-state">新泽西 · 费城精英外溢廊道</div>
+        <div class="proj-row"><span class="proj-lbl">总开发成本</span><span class="proj-val">$99M</span></div>
+        <div class="proj-row"><span class="proj-lbl">预计退出估值</span><span class="proj-val">$160M+</span></div>
+        <div class="proj-row"><span class="proj-lbl">股权回报</span><span class="proj-val hl">2.97x</span></div>
+        <div class="proj-row"><span class="proj-lbl">Yield on Cost</span><span class="proj-val">7.4%</span></div>
+        <div class="proj-row"><span class="proj-lbl">平均月租 2BR</span><span class="proj-val">$3,400+</span></div>
+      </div>
+      <div class="proj-footer"><span>325</span> 套 · 80% 存量老旧 · 近乎垄断新供应</div>
+    </div>
+  </div>
+  <div class="inst-bar">
+    <div class="inst"><div class="inst-n">全球顶级 PE</div><div class="inst-l">机构共投方</div></div>
+    <div class="inst"><div class="inst-n">$4,000 亿+</div><div class="inst-l">AUM · NASDAQ 上市</div></div>
+    <div class="inst"><div class="inst-n">10年+</div><div class="inst-l">美国本地开发经验</div></div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<div class="sec fi">
+  <div class="sec-tag">回报传导</div>
+  <h2 class="sec-h2">$100 万 → 5 年后 $215 万</h2>
+  <div class="steps">
+    <div class="step"><div class="step-n">①</div><div><div class="step-h">项目层：杠杆放大收益</div><div class="step-p">银行贷款 60 ~ 70%，基金只出 5 ~ 10% 股本，通过开发增值实现超额回报。</div></div></div>
+    <div class="step"><div class="step-n">②</div><div><div class="step-h">基金层：多项目分散风险</div><div class="step-p">10 个独立 SPV，单项目风险不传染整体，完成即退出分配，资金不空转。</div></div></div>
+    <div class="step"><div class="step-n">③</div><div><div class="step-h">投资人层：优先保障 + 超额分享</div><div class="step-p">7% 优先收益 LP 先拿；超额利润 80% 归投资人；GP 仅在 LP 获 7% 后才提 Carry。</div></div></div>
+  </div>
+</div>
+
+<div class="calc fi">
+  <div class="calc-h">💡 投入 $100 万，五年回报拆解</div>
+  <div class="calc-row">
+    <div class="calc-item"><div class="calc-n" style="color:var(--gold)">$100万</div><div class="calc-l">投入本金</div></div>
+    <div class="calc-op">＋</div>
+    <div class="calc-item"><div class="calc-n" style="color:var(--sub);font-size:17px">$35万</div><div class="calc-l">7% 优先收益</div></div>
+    <div class="calc-op">＋</div>
+    <div class="calc-item"><div class="calc-n" style="color:var(--sub);font-size:17px">$80万</div><div class="calc-l">超额利润 80%</div></div>
+    <div class="calc-op">＝</div>
+    <div class="calc-item"><div class="calc-n" style="color:var(--teal)">$215万</div><div class="calc-l">净回收 · 2.15 倍</div></div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<div class="sec fi">
+  <div class="sec-tag">投资条款</div>
+  <h2 class="sec-h2">Investment Terms</h2>
+  <div class="terms">
+    <div class="term"><span class="t-l">目标回报倍数</span><span class="t-r gold">2.15x</span></div>
+    <div class="term"><span class="t-l">目标净 IRR</span><span class="t-r gold">16.9%</span></div>
+    <div class="term"><span class="t-l">优先收益</span><span class="t-r teal">7% / 年（挂账计提）</span></div>
+    <div class="term"><span class="t-l">超额分配</span><span class="t-r">LP 80% / GP 20%</span></div>
+    <div class="term"><span class="t-l">管理费</span><span class="t-r">1.0% / 年（行业均值 2%）</span></div>
+    <div class="term"><span class="t-l">最低起投</span><span class="t-r gold">$100,000</span></div>
+    <div class="term"><span class="t-l">本次开放额度</span><span class="t-r">$10,000,000</span></div>
+    <div class="term"><span class="t-l">预计退出分配</span><span class="t-r">第 5 年起阶段退出</span></div>
+  </div>
+</div>
+
+<div class="cta fi">
+  <h2 class="cta-h">当前处于第一批募资窗口</h2>
+  <p class="cta-sub">当前处于第一批募资窗口，额度有限<br>越早入场，优先收益累积越长，绝对回报越高</p>
+  <a class="cta-btn" href="#">立即了解详情 →</a>
+  <div class="disclaimer">* 以上数据均为目标预估，不构成投资承诺。本基金为股权投资产品，存在本金损失风险，请充分了解风险后独立判断。</div>
+</div>
+</div>
+</div>
+
+<script>
+let cur=0;
+const pages=document.getElementById('pages');
+const tabs=document.querySelectorAll('.tab');
+function go(n){
+  cur=n;
+  pages.style.transform='translateX('+(-n*100)+'vw)';
+  tabs.forEach((t,i)=>t.classList.toggle('on',i===n));
+  setTimeout(()=>{
+    pages.querySelectorAll('.page:nth-child('+(n+1)+') .fi').forEach(el=>el.classList.add('on'));
+  },80);
+}
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});
+},{threshold:0.08});
+document.querySelectorAll('.page:first-child .fi').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>  nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(10,10,15,0.92);
     backdrop-filter: blur(12px);
