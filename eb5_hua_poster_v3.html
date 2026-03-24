@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EB-5 HUA 海报 v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  .poster {
+    width: 780px;
+    background: linear-gradient(165deg, #120800 0%, #260c0c 50%, #120400 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 52px 54px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* Background */
+  .bg-glow {
+    position: absolute; border-radius: 50%; pointer-events: none;
+  }
+  .bg-glow-1 {
+    width: 650px; height: 650px;
+    background: radial-gradient(circle, rgba(212,160,23,0.06) 0%, transparent 70%);
+    top: -250px; right: -180px;
+  }
+  .bg-glow-2 {
+    width: 450px; height: 450px;
+    background: radial-gradient(circle, rgba(160,30,30,0.05) 0%, transparent 70%);
+    bottom: -120px; left: -100px;
+  }
+  .bg-grid {
+    position: absolute; top:0; left:0; right:0; bottom:0;
+    background-image:
+      repeating-linear-gradient(90deg, transparent, transparent 77px, rgba(212,160,23,0.03) 77px, rgba(212,160,23,0.03) 78px);
+  }
+  .top-bar {
+    position: absolute; top:0; left:0; right:0; height:4px;
+    background: linear-gradient(90deg, transparent, #a06800 15%, #f0c040 50%, #a06800 85%, transparent);
+  }
+  .bottom-bar {
+    position: absolute; bottom:0; left:0; right:0; height:2px;
+    background: linear-gradient(90deg, transparent, #a06800 15%, #d4a017 50%, #a06800 85%, transparent);
+    opacity: 0.5;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .h-rule { flex:1; height:1px; }
+  .h-rule.l { background: linear-gradient(90deg, transparent, rgba(212,160,23,0.4)); }
+  .h-rule.r { background: linear-gradient(90deg, rgba(212,160,23,0.4), transparent); }
+  .h-label {
+    font-size: 11.5px; font-weight: 700; letter-spacing: 4px;
+    color: #b8860b; white-space: nowrap;
+  }
+
+  /* ── TITLE ── */
+  .title-block { margin-bottom: 2px; }
+  .title-eye {
+    font-size: 13px; font-weight: 300; letter-spacing: 3px;
+    color: rgba(212,160,23,0.55); margin-bottom: 8px;
+  }
+  .title-main {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 46px; font-weight: 900; line-height: 1.2; color: #fff;
+  }
+  .title-main .gold { color: #f2c840; }
+  .title-main .red  { color: #e06060; }
+
+  /* ── ORNAMENT ── */
+  .ornament {
+    display: flex; align-items: center; gap: 12px; margin: 2px 0;
+  }
+  .orn-l { flex:1; height:1px; background: linear-gradient(90deg, rgba(212,160,23,0.5), rgba(212,160,23,0.08)); }
+  .orn-r { flex:1; height:1px; background: linear-gradient(90deg, rgba(212,160,23,0.08), rgba(212,160,23,0.5)); }
+  .orn-d { width:6px; height:6px; background:#d4a017; transform:rotate(45deg); }
+
+  /* ── SECTION LABEL ── */
+  .sec-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+
+  /* ── RULE BLOCK (官方原文) ── */
+  .rule-block {
+    border: 1px solid rgba(212,160,23,0.2);
+    border-left: 3px solid #b8860b;
+    background: rgba(212,160,23,0.05);
+    border-radius: 4px;
+    padding: 18px 22px;
+  }
+  .rule-block .sec-label { color: #b8860b; }
+
+  .quote-box {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(212,160,23,0.15);
+    border-radius: 3px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+  .quote-text {
+    font-size: 13px; line-height: 1.9;
+    color: rgba(255,255,255,0.65);
+    font-style: italic; letter-spacing: 0.3px;
+  }
+  .quote-text .hl  { color: #f2c840; font-style: normal; font-weight: 600; }
+  .quote-text .hlr { color: #e07878; font-style: normal; font-weight: 600; }
+
+  .quote-source {
+    font-size: 10px; color: rgba(212,160,23,0.4);
+    letter-spacing: 1px; margin-top: 8px; text-align: right;
+  }
+
+  /* ── ANALYSIS ROWS ── */
+  .analysis-rows {
+    display: flex; flex-direction: column; gap: 9px;
+  }
+  .a-row {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 13.5px; line-height: 1.6;
+    color: rgba(255,255,255,0.82);
+  }
+  .a-key {
+    flex-shrink: 0;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: #d4a017;
+    background: rgba(212,160,23,0.1);
+    border: 1px solid rgba(212,160,23,0.25);
+    padding: 3px 8px; border-radius: 2px;
+    margin-top: 1px; white-space: nowrap;
+  }
+  .a-key.red {
+    color: #e07878;
+    background: rgba(220,80,80,0.1);
+    border-color: rgba(220,80,80,0.25);
+  }
+  .a-row .gold { color: #f2c840; font-weight: 600; }
+  .a-row .red  { color: #e07878; font-weight: 600; }
+
+  /* 中文注释小字 */
+  .zh-note {
+    font-size: 11px; color: rgba(255,255,255,0.4);
+    font-style: normal; font-weight: 400;
+  }
+
+  /* ── SITUATION BLOCK (现状) ── */
+  .sit-block {
+    border: 1px solid rgba(220,80,80,0.25);
+    border-left: 3px solid #c0392b;
+    background: rgba(192,57,43,0.06);
+    border-radius: 4px;
+    padding: 18px 22px;
+  }
+  .sit-block .sec-label { color: #e07070; }
+
+  /* ── FLOW CHAIN ── */
+  .flow {
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .flow-step {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-num {
+    flex-shrink: 0;
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    margin-top: 1px;
+  }
+  .flow-num.gold {
+    background: rgba(212,160,23,0.15);
+    border: 1px solid rgba(212,160,23,0.4);
+    color: #d4a017;
+  }
+  .flow-num.red {
+    background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(192,57,43,0.4);
+    color: #e07070;
+  }
+  .flow-text {
+    font-size: 13.5px; line-height: 1.65;
+    color: rgba(255,255,255,0.82);
+  }
+  .flow-text .gold { color: #f2c840; font-weight: 600; }
+  .flow-text .red  { color: #e07878; font-weight: 600; }
+
+  /* ── PROJECT BLOCK ── */
+  .proj-block {
+    border: 1px solid rgba(212,160,23,0.35);
+    border-left: 3px solid #f0c040;
+    background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(212,160,23,0.03));
+    border-radius: 4px;
+    padding: 18px 22px;
+  }
+  .proj-block .sec-label { color: #f0c040; }
+
+  .proj-points {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .proj-pt {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 14px; line-height: 1.6;
+    color: rgba(255,255,255,0.88);
+  }
+  .proj-icon { color: #d4a017; flex-shrink: 0; margin-top:3px; font-size: 11px; }
+  .proj-pt .gold { color: #f2c840; font-weight: 600; }
+
+  /* ── KEY MESSAGE ── */
+  .key-msg {
+    background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(212,160,23,0.02));
+    border: 1px solid rgba(212,160,23,0.25);
+    border-radius: 4px;
+    padding: 20px 24px;
+    text-align: center;
+  }
+  .key-msg-main {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px; font-weight: 700;
+    color: #fff; line-height: 1.75; margin-bottom: 8px;
+  }
+  .key-msg-main .gold { color: #f2c840; }
+  .key-msg-main .red  { color: #e07878; }
+  .key-msg-sub {
+    font-size: 12px; color: rgba(212,160,23,0.55); letter-spacing: 1.5px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid rgba(212,160,23,0.15);
+    padding-top: 14px; text-align: center;
+  }
+  .footer-slogan {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px; font-weight: 600;
+    color: rgba(212,160,23,0.75); letter-spacing: 4px; margin-bottom: 4px;
+  }
+  .footer-en {
+    font-size: 11px; color: rgba(255,255,255,0.2);
+    letter-spacing: 2px; margin-bottom: 10px;
+  }
+  .disclaimer {
+    font-size: 10.5px; color: rgba(255,255,255,0.18);
+    line-height: 1.6; letter-spacing: 0.2px;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-grid"></div>
+  <div class="top-bar"></div>
+  <div class="bottom-bar"></div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="h-rule l"></div>
+    <span class="h-label">EB-5 投资移民 · 2026 政策规则解读</span>
+    <div class="h-rule r"></div>
+  </div>
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <div class="title-eye">读懂 USCIS 新规 · 看清审案逻辑 · 把握入场时机</div>
+    <div class="title-main">
+      乡村审批<span class="red">渐近尾声</span><br>
+      城市 HUA<span class="gold">迎来窗口</span>
+    </div>
+  </div>
+
+  <div class="ornament">
+    <div class="orn-l"></div><div class="orn-d"></div><div class="orn-r"></div>
+  </div>
+
+  <!-- PART 1: 官方原文 + 审案规则详解 -->
+  <div class="rule-block">
+    <div class="sec-label">▸ 一、USCIS 官方原文（2026年2月25日发布，3月30日起生效）</div>
+
+    <div class="quote-box">
+      <div class="quote-text">
+        "Assigning Form I-526E rural petitions by a FIFO approach
+        <span class="hl">as priority for anticipated fiscal year rural visa usage</span>;
+        and assigning other Form I-526E petitions by a FIFO approach
+        <span class="hlr">after the rural queue is empty or when we determine we have made decisions on enough petitions</span>
+        from that queue. IPO may also group petitions in the non-rural queue
+        by visa subcategory —— high unemployment area, infrastructure, and unreserved ——
+        and assign petitions by sub-queue in FIFO order
+        <span class="hl">to facilitate usage of reserved visas.</span>"
+      </div>
+      <div class="quote-source">— USCIS EB-5 Questions & Answers，2026年2月25日更新</div>
+    </div>
+
+    <div class="analysis-rows">
+      <div class="a-row">
+        <span class="a-key">前提</span>
+        <span>投资人 I-526E <span class="zh-note">（个人移民申请）</span>须等对应项目 I-956F <span class="zh-note">（项目资质申请）</span>获批后，方可进入审批队列——项目批准是个人申请的前置条件</span>
+      </div>
+      <div class="a-row">
+        <span class="a-key">第一层</span>
+        <span>Rural <span class="zh-note">（乡村类）</span> I-526E 优先，按提交时间 FIFO <span class="zh-note">（先进先出）</span>排队，目标是满足本财年乡村签证预期用量</span>
+      </div>
+      <div class="a-row">
+        <span class="a-key red">切换</span>
+        <span>乡村队列<span class="red">「清空」OR「处理够了」</span>二选一即触发——USCIS 内部判断，不一定要等全部审完才切换</span>
+      </div>
+      <div class="a-row">
+        <span class="a-key">第二层</span>
+        <span>切换后按子类别分队：<span class="gold">HUA 高失业区 → Infrastructure 基础设施 → Unreserved 无保留类</span>，各队列内按提交时间排，同一 NCE <span class="zh-note">（项目主体）</span>下申请归为一组处理</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 2: 现状解析 -->
+  <div class="sit-block">
+    <div class="sec-label">▸ 二、目前形势：乡村审批进入后段，城市窗口渐次开启</div>
+    <div class="flow">
+      <div class="flow-step">
+        <span class="flow-num red">1</span>
+        <span class="flow-text">大量乡村项目 I-956F <span class="zh-note">（项目资质）</span>已陆续获批，相关 <span class="red">Rural 乡村 I-526E 亦大批获批</span>——乡村这一轮的主要存量已在消化中</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num red">2</span>
+        <span class="flow-text">已获批的乡村申请人持续累积，<span class="red">与本财年可发放签证量的差距正在收窄</span>——USCIS 触发切换的条件逐渐成熟</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num gold">3</span>
+        <span class="flow-text">此背景下，<span class="gold">HUA 高失业区子队列获得更多处理资源的时机正在到来</span>，部分城市项目已可见实际获批迹象</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 3: 现实印证 -->
+  <div class="proj-block">
+    <div class="sec-label">▸ 三、磐远金融城公寓项目——已有获批记录可参考</div>
+
+    <div class="proj-points">
+      <div class="proj-pt">
+        <span class="proj-icon">◆</span>
+        <span>本项目属 <span class="gold">HUA 城市高失业区</span>类别，I-956F <span class="zh-note">（项目资质申请）</span>已获 USCIS 批准，项目合规性已通过审核</span>
+      </div>
+      <div class="proj-pt">
+        <span class="proj-icon">◆</span>
+        <span>批量投资人 <span class="gold">I-526E 移民申请 · I-485 身份调整 · 有条件绿卡</span>已陆续收到获批——同一项目下审批节奏已形成</span>
+      </div>
+      <div class="proj-pt">
+        <span class="proj-icon">◆</span>
+        <span>根据 NCE <span class="zh-note">（同一项目主体）</span>同组原则，现阶段加入可<span class="gold">跟进已启动的审批轨道</span>，相较从零等待有一定时间优势</span>
+      </div>
+      <div class="proj-pt">
+        <span class="proj-icon">◆</span>
+        <span>HUA 高失业区签证目前 Visa Bulletin <span class="zh-note">（移民局签证公告）</span>仍显示 <span class="gold">Current 无排期截止</span>，整体通道相对畅通</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY MESSAGE -->
+  <div class="key-msg">
+    <div class="key-msg-main">
+      本项目已有<span class="gold">批量投资人完成各阶段获批</span><br>
+      现阶段加入，可参考已有获批路径<br>
+      <span class="gold">时机相对有利，值得认真考虑</span>
+    </div>
+    <div class="key-msg-sub">以上仅供参考，个人情况各异，建议咨询专业律师评估</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-slogan">顺势而为 · 稳健布局</div>
+    <div class="footer-en">EB-5 HIGH UNEMPLOYMENT AREA · URBAN PROJECT · FY2026</div>
+    <div class="disclaimer">
+      * 规则引用自 USCIS 官方 EB-5 Q&A 页面（2026年2月25日更新，3月30日起生效）。本材料仅供参考，不构成法律或投资建议，请咨询持牌移民律师。
+    </div>
+  </div>
+</div>
+</body>
+</html>
